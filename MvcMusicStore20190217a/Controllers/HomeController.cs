@@ -15,14 +15,14 @@ namespace MvcMusicStore20190217a.Controllers
 
         public ActionResult About()
         {
-            ViewBag.Message = "Your application description page.";
+            ViewBag.Message = "关于本站-Your application description page.";
 
             return View();
         }
 
         public ActionResult Contact()
         {
-            ViewBag.Message = "Your contact page.";
+            ViewBag.Message = "联系页面-Your contact page.";
 
             return View();
         }
