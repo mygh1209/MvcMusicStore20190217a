@@ -19,8 +19,11 @@ namespace MvcMusicStore20190217a.Models
         {
         }
 
-        public System.Data.Entity.DbSet<MvcMusicStore20190217a.Models.Album> Albums { get; set; }
+        public DbSet<Album> Albums { get; set; }
 
-        public System.Data.Entity.DbSet<MvcMusicStore20190217a.Models.Review> Reviews { get; set; }
+        public DbSet<Review> Reviews { get; set; }
+
+        // Added by yuan0221-0703
+        public DbSet<Artist> Artists { get; set; }
     }
 }

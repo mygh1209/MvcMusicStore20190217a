@@ -8,6 +8,9 @@ namespace MvcMusicStore20190217a.Models
 
         public string Title { get; set; }
 
+        //public int NumberofSongs { get; set; }
+
+
         public Artist Artist { get; set; }
 
         //new added

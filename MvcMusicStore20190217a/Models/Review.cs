@@ -7,6 +7,7 @@ namespace MvcMusicStore20190217a.Models
         public int ReviewID { get; set; }
 
         //new added
+        [Display(Name ="Album_me")]
         public int AlbumID { get; set; }
 
         public virtual Album Album { get; set; }

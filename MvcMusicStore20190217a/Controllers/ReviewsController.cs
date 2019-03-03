@@ -48,7 +48,8 @@ namespace MvcMusicStore20190217a.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ReviewID,AlbumID,Contents,ReviewerEmail")] Review review)
+        //public ActionResult Create([Bind(Include = "ReviewID,AlbumID,Contents,ReviewerEmail")] Review review)
+        public ActionResult Create(Review review)
         {
             if (ModelState.IsValid)
             {

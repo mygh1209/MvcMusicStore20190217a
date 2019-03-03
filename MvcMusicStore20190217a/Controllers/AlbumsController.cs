@@ -10,17 +10,48 @@ using MvcMusicStore20190217a.Models;
 
 namespace MvcMusicStore20190217a.Controllers
 {
+
     public class AlbumsController : Controller
     {
         private MvcMusicStore20190217aContext db = new MvcMusicStore20190217aContext();
 
+        public ActionResult AlbumWithReviews(int id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+
+            }
+
+            Album album = db.Albums.Find(id);
+            var reviews = db.Reviews.Where(r => r.AlbumID == id);
+
+
+            return View();
+        }
+
+
+        //public ActionResult DisplayByArtist(int artistID)
+        public ActionResult DisplayByArtist()
+        {
+            // Imagine codes here
+
+            return View();
+        }
+
         // GET: Albums
+        [Route("Albums/All")]
         public ActionResult Index()
         {
-            return View(db.Albums.ToList());
+            // Get the model
+            var albums = db.Albums.ToList();
+
+            // Combine the model with the view and return 
+            return View(albums);
         }
 
         // GET: Albums/Details/5
+        [Route("Album/{id:int}")]
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -32,10 +63,13 @@ namespace MvcMusicStore20190217a.Controllers
             {
                 return HttpNotFound();
             }
+
             return View(album);
         }
 
         // GET: Albums/Create
+        //1. Display the form ;the method is GET by default
+        [Authorize()]
         public ActionResult Create()
         {
             return View();
@@ -44,9 +78,12 @@ namespace MvcMusicStore20190217a.Controllers
         // POST: Albums/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
+        //  2.Accept the input
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "AlbumID,Title")] Album album)
+        //public ActionResult Create([Bind(Include = "AlbumID,Title")] Album album)
+        //public ActionResult Create(FormCollection album) 
+        public ActionResult Create(Album album) //
         {
             if (ModelState.IsValid)
             {
